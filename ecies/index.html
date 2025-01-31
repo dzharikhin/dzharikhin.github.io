@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ECIE</title>
+  <script type="module" crossorigin src="./index.js"></script>
+</head>
+<body>
+    <h2>Encrypt message locally</h2>
+    <form  id="ecies-form" onsubmit="event.preventDefault()">
+        <div style="display: grid">
+            <label>
+                <textarea id="pk" name="pk" placeholder="public key" rows="3" cols="100" required></textarea>
+            </label>
+            <label>
+                <input id="content" type="password" name="content" placeholder="message to encrypt" required/>
+            </label>
+            <button type="submit" onclick="">Encrypt</button>
+        </div>
+        <div>
+            <label>
+                <textarea id="result" name="result" placeholder="encoded result here" rows="3" cols="100"></textarea>
+            </label>
+        </div>
+    </form>
+</body>
+</html>

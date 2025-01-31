@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ECIE</title>
+    <script  type="module" src="ecies-form.js"></script>
+    <script type="module">
+        import { setup } from './ecies-form.js';
+        setup(
+          document.querySelector("#pk"),
+          document.querySelector("#content"),
+          document.querySelector("#ecies-form"),
+          document.querySelector("#result")
+        );
+    </script>
+</head>
+<body>
+    <h2>Encrypt message locally</h2>
+    <form  id="ecies-form" onsubmit="event.preventDefault()">
+        <div style="display: grid">
+            <label>
+                <textarea id="pk" name="pk" placeholder="public key" rows="3" cols="100" required></textarea>
+            </label>
+            <label>
+                <input id="content" type="password" name="content" placeholder="message to encrypt" required/>
+            </label>
+            <button type="submit" onclick="">Encrypt</button>
+        </div>
+        <div>
+            <label>
+                <textarea id="result" name="result" placeholder="encoded result here" rows="3" cols="100"></textarea>
+            </label>
+        </div>
+    </form>
+</body>
+</html>
