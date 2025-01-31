@@ -1,0 +1,6 @@
+title: dzharikhin pages
+description: some static pages
+repository: dzharikhin/dzharikhin.hithub.io
+encoding: UTF-8
+plugins:
+  - jekyll-github-metadata
