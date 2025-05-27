@@ -14,6 +14,12 @@ export function setup(pkContainer, contentContainer, encodingTriggerElement, res
     let encrypted = encrypt(publicKey.toHex(), encoder.encode(contentContainer.value));
     resultContainer.value = bytesToHex(encrypted);
   };
-
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.has("pk")) {
+    pkContainer.value = urlParams.get("pk");
+  }
+  if (urlParams.has("msg")) {
+    contentContainer.value = urlParams.get("msg");
+  }
   encodingTriggerElement.addEventListener("submit", () => handleEciesForm());
 }

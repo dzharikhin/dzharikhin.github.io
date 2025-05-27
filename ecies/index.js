@@ -3752,7 +3752,7 @@ function requireCurve() {
         const points = [];
         let p = elm;
         let base = p;
-        for (let window = 0; window < windows; window++) {
+        for (let window2 = 0; window2 < windows; window2++) {
           base = p;
           points.push(base);
           for (let i = 1; i < windowSize; i++) {
@@ -3777,8 +3777,8 @@ function requireCurve() {
         const mask = BigInt(2 ** W - 1);
         const maxNumber = 2 ** W;
         const shiftBy = BigInt(W);
-        for (let window = 0; window < windows; window++) {
-          const offset = window * windowSize;
+        for (let window2 = 0; window2 < windows; window2++) {
+          const offset = window2 * windowSize;
           let wbits = Number(n & mask);
           n >>= shiftBy;
           if (wbits > windowSize) {
@@ -3787,7 +3787,7 @@ function requireCurve() {
           }
           const offset1 = offset;
           const offset2 = offset + Math.abs(wbits) - 1;
-          const cond1 = window % 2 !== 0;
+          const cond1 = window2 % 2 !== 0;
           const cond2 = wbits < 0;
           if (wbits === 0) {
             f = f.add(constTimeNegate(cond1, precomputes[offset1]));
@@ -3810,8 +3810,8 @@ function requireCurve() {
         const mask = BigInt(2 ** W - 1);
         const maxNumber = 2 ** W;
         const shiftBy = BigInt(W);
-        for (let window = 0; window < windows; window++) {
-          const offset = window * windowSize;
+        for (let window2 = 0; window2 < windows; window2++) {
+          const offset = window2 * windowSize;
           if (n === _0n)
             break;
           let wbits = Number(n & mask);
@@ -8635,6 +8635,13 @@ function setup(pkContainer, contentContainer, encodingTriggerElement, resultCont
     let encrypted = distExports.encrypt(publicKey.toHex(), encoder.encode(contentContainer.value));
     resultContainer.value = bytesToHex(encrypted);
   };
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.has("pk")) {
+    pkContainer.value = urlParams.get("pk");
+  }
+  if (urlParams.has("msg")) {
+    contentContainer.value = urlParams.get("msg");
+  }
   encodingTriggerElement.addEventListener("submit", () => handleEciesForm());
 }
 setup(
